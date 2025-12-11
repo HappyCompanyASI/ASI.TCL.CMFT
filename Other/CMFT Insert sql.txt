@@ -1,0 +1,74 @@
+DELETE FROM dbo.voice;
+DELETE FROM dbo.voice_group;
+DELETE FROM dbo.message;
+DELETE FROM dbo.message_group;
+DELETE FROM dbo.user;
+DELETE FROM dbo.role;
+
+-- 預錄語音群組 --
+INSERT INTO dbo.voice_group (id, group_name, created_by, created_at, updated_by, updated_at)
+  VALUES
+  ('1f2a4c2b-3d54-47a7-a2d2-bd8e52968485', '政令宣導', 'system', NOW(), 'system', NOW()),
+  ('a3d3e0f1-ec1c-4a55-a5cf-70f5fd0122cc', '安全宣導', 'system', NOW(), 'system', NOW()),
+  ('67825cc7-f1a6-4d65-b3c4-03a0c39e021a', '衛生宣導', 'system', NOW(), 'system', NOW()),
+  ('c216b73b-ff5a-4d82-b81a-04207b57910a', '活動訊息', 'system', NOW(), 'system', NOW()),
+  ('ec51aef7-09d3-4714-93ee-73913b9497e9', '測試',     'system', NOW(), 'system', NOW());
+
+-- 預錄語音 --
+INSERT INTO dbo.voice(
+    id, name, content, is_chn, is_twn, is_hakka, is_eng, belong_group_id, created_by, created_at, updated_by, updated_at)
+VALUES
+    ('4b806ad8-7806-4de0-ac98-43a9f764ef32', '不要飲食', '各位旅客您好，為維護環境清潔，請不要在車站及列車上吃東西、喝飲料、嚼口香糖或檳榔。', true, true, true, true, '1f2a4c2b-3d54-47a7-a2d2-bd8e52968485', 'system', NOW(), 'system', NOW()),
+    ('29b8b9af-a0d4-426f-a4c3-06eb6847fdc1', '單程票使用', '各位旅客您好，使用單程票時請將車票輕觸感應區後進站，出站時，車票會自動回收，謝謝您的支持與配合。', true, false, true, true, 'a3d3e0f1-ec1c-4a55-a5cf-70f5fd0122cc', 'system', NOW(), 'system', NOW()),
+    ('f614ca10-4aa9-464a-b5c2-e8e0107133e7', '事故後續辦理', '各位旅客請注意，因本次事故而離開車站的旅客，您所持用的悠遊卡可繼續使用，不扣除本次旅程費用；持用單程票的旅客，請在一週內向車站辦理退票。', true, false, true, true, '67825cc7-f1a6-4d65-b3c4-03a0c39e021a', 'system', NOW(), 'system', NOW()),
+    ('9c3a836e-749b-4cfb-992f-0dde4c411e09', '行動不便改搭電梯', '各位旅客您好，由於電扶梯移動速度較快，年長及行動不便的旅客請儘量改搭電梯，以維護您的安全。', true, false, false, true, 'c216b73b-ff5a-4d82-b81a-04207b57910a', 'system', NOW(), 'system', NOW()),
+    ('501ace3e-c515-44ab-8edd-ded6fe6ded03', '電扶梯靠右', '各位旅客請注意，搭乘電扶梯時，請靠右站立保持左側淨空並緊握扶手，謝謝您的支持與配合。', false, true, true, true, 'ec51aef7-09d3-4714-93ee-73913b9497e9', 'system', NOW(), 'system', NOW()),
+    ('663fa2fc-91ca-4af8-83ec-13009404bc84', '照顧好小孩', '各位旅客您好，為了維持秩序與安全，請照顧好您的小孩，不要讓他們在車站及列車上奔跑，以免發生危險，謝謝您的支持與配合。', true, true, true, false, '1f2a4c2b-3d54-47a7-a2d2-bd8e52968485', 'system', NOW(), 'system', NOW()),
+    ('7e5cfcf8-39f8-4da8-8167-2338df9837d3', '候車線排隊', '您好，候車時，請於白色候車線後方依序排隊，謝謝。', true, false, true, true, 'a3d3e0f1-ec1c-4a55-a5cf-70f5fd0122cc', 'system', NOW(), 'system', NOW()),
+    ('affdb627-9bc8-4b3a-ac3c-82539c071782', '緊急事故', '各位旅客請注意，各位旅客請注意，由於車站內發生緊急事故，為了您的安全，請迅速離開車站。', true, false, true, true, '67825cc7-f1a6-4d65-b3c4-03a0c39e021a', 'system', NOW(), 'system', NOW()),
+    ('13ecfc43-0efb-4aae-9fe4-14776c490f2a', '下車再上車', '各位旅客您好，搭車時請禮讓車上旅客下車再依序上車，謝謝您的支持與配合。', true, true, true, true, 'c216b73b-ff5a-4d82-b81a-04207b57910a', 'system', NOW(), 'system', NOW()),
+    ('3da2e3d0-834f-4e4f-9980-f475f146eac3', '人潮眾多分散候車', '各位旅客您好，因為現在人潮眾多，請各位旅客分散到各車廂門候車，以避免擁擠，謝謝您的支持與配合。', true, true, true, true, 'ec51aef7-09d3-4714-93ee-73913b9497e9', 'system', NOW(), 'system', NOW()),
+    ('4788075e-feba-40f4-a275-b09c1ecd15b2', '單程票使用', '各位旅客您好，使用單程票時請將車票輕觸感應區後進站，出站時，車票會自動回收，謝謝您的支持與配合。', true, true, true, false, '1f2a4c2b-3d54-47a7-a2d2-bd8e52968485', 'system', NOW(), 'system', NOW()),
+    ('389f9723-162b-4c8a-8ba0-f946ba60a211', '分散候車', '您好，月台候車時，請分散候車位置，以節省您的上下車時間，謝謝。', true, true, true, true, 'a3d3e0f1-ec1c-4a55-a5cf-70f5fd0122cc', 'system', NOW(), 'system', NOW()),
+    ('68eb274e-492b-471d-a6f3-fe6a9e72dbca', '因故暫停服務', '各位旅客請注意，本站因故將暫停服務，請遵照服務人員的引導，迅速離開車站，謝謝您的支持與配合。', true, true, true, true, '67825cc7-f1a6-4d65-b3c4-03a0c39e021a', 'system', NOW(), 'system', NOW());
+
+-- 預錄訊息群組 --
+INSERT INTO dbo.message_group (
+  id, group_name, created_by, created_at, updated_by, updated_at)
+  VALUES
+  ('379a3658-026f-4824-ab9f-c76e19178949', '政令宣導', 'system', NOW(), 'system', NOW()),
+  ('9c26fd7c-62c6-463d-9fd9-649c7f24ddad', '安全宣導', 'system', NOW(), 'system', NOW()),
+  ('3ee9de33-b377-4ff5-a378-e80b249b194f', '衛生宣導', 'system', NOW(), 'system', NOW()),
+  ('00a66baf-dbb5-4661-856d-5bbdab760aef', '活動訊息', 'system', NOW(), 'system', NOW()),
+  ('6637a282-5f90-4382-9f50-f026f10454bb', '測試',     'system', NOW(), 'system', NOW());
+
+-- 預錄訊息 --
+INSERT INTO dbo.message (
+  id, name, content, belong_group_id, is_use_du,
+  created_by, created_at, updated_by, updated_at) 
+  VALUES
+  ('60b4a1d1-5ad0-489a-930c-e54d8ed6cb9a', '不要飲食', '各位旅客您好，為維護環境清潔，請不要在車站及列車上吃東西、喝飲料、嚼口香糖或檳榔。', '379a3658-026f-4824-ab9f-c76e19178949', false, 'system', NOW(), 'system', NOW()),
+  ('b097ec95-e3d6-4a7e-8e1e-9f027d47e3d4', '單程票使用', '各位旅客您好，使用單程票時請將車票輕觸感應區後進站，出站時，車票會自動回收，謝謝您的支持與配合。', '379a3658-026f-4824-ab9f-c76e19178949', false, 'system', NOW(), 'system', NOW()),
+  ('32f2fd98-69fd-4f9f-bd36-3a8bc2f6cbaf', '事故後續辦理', '各位旅客請注意，因本次事故而離開車站的旅客，您所持用的悠遊卡可繼續使用，不扣款本次旅程費用；持用單程票的旅客，請在一週內向車站辦理退票。', '379a3658-026f-4824-ab9f-c76e19178949', false, 'system', NOW(), 'system', NOW()),
+  ('e0ef04a2-0504-4d5c-9bc9-c59187a4206a', '不要飲食', '各位旅客您好，為維護環境清潔，請不要在車站及列車上吃東西、喝飲料、嚼口香糖或檳榔。', '9c26fd7c-62c6-463d-9fd9-649c7f24ddad', false, 'system', NOW(), 'system', NOW()),
+  ('1bd0b9e9-9516-42c1-9f17-70ff8d6a0ebf', '行動不便改搭電梯', '各位旅客您好，由於電扶梯移動速度較快，年長及行動不便的旅客請儘量改搭電梯，以維護您的安全。', '9c26fd7c-62c6-463d-9fd9-649c7f24ddad', false, 'system', NOW(), 'system', NOW()),
+  ('f377b90b-5194-422a-9a52-620c6f02b75a', '電扶梯靠右', '各位旅客請注意，搭乘電扶梯時，請靠右站立保持左側通道暢通，謝謝您的支持與配合。', '3ee9de33-b377-4ff5-a378-e80b249b194f', false, 'system', NOW(), 'system', NOW()),
+  ('53c319a5-1234-4ae5-bd57-55927a4cfd50', '照顧好小孩', '各位旅客您好，為了維持車站安全，請照顧好您的小孩，不要讓他們在車站及列車上奔跑。以免發生危險，謝謝您的支持與配合。', '3ee9de33-b377-4ff5-a378-e80b249b194f', false, 'system', NOW(), 'system', NOW()),
+  ('2f739216-8b1b-49cb-a63e-f8eb9bc1e225', '候車線排隊', '您好，候車時，請於白色候車線後方依序排隊，謝謝。', '3ee9de33-b377-4ff5-a378-e80b249b194f', false, 'system', NOW(), 'system', NOW()),
+  ('05985cd2-6cc5-46cb-b1cb-4a5df0211433', '緊急事故', '各位旅客請注意，由於車站內發生緊急事故，為了您的安全，請遵從現場人員引導。', '3ee9de33-b377-4ff5-a378-e80b249b194f', false, 'system', NOW(), 'system', NOW()),
+  ('f9ad5c48-0aa6-4efb-ae9c-6ef1cbffdd7b', '下車再上車', '各位旅客您好，搭車時請禮讓乘客下車再依序上車，謝謝您的支持與配合。', '00a66baf-dbb5-4661-856d-5bbdab760aef', false, 'system', NOW(), 'system', NOW()),
+  ('2a13f06f-0c3d-4eb7-a3ea-ccf4b760716b', '人潮眾多分散候車', '各位旅客您好，因現場人潮眾多，請各位旅客分散到各車廂間候車，以避免擁擠，謝謝您的支持與配合。', '00a66baf-dbb5-4661-856d-5bbdab760aef', false, 'system', NOW(), 'system', NOW()),
+  ('62f3168b-3b25-4b76-91c2-c5178235cb48', '單程票使用', '各位旅客您好，使用單程票時請將車票輕觸感應區後進站，出站時，車票會自動回收，謝謝您的支持與配合。', '00a66baf-dbb5-4661-856d-5bbdab760aef', false, 'system', NOW(), 'system', NOW()),
+  ('ec0d50fa-b2c9-4376-b2a0-14f4b7682615', '分散候車', '您好，月台候車時，請分散候車位置，以節省您的上下車時間，謝謝。', '6637a282-5f90-4382-9f50-f026f10454bb', false, 'system', NOW(), 'system', NOW()),
+  ('ad0e671c-79c5-4604-8db6-498d6bb2d452', '因故暫停服務', '各位旅客請注意，本站因故將暫停服務，請遵照服務人員的引導，迅速離開車站，謝謝您的支持與配合。', '6637a282-5f90-4382-9f50-f026f10454bb', false, 'system', NOW(), 'system', NOW());
+
+-- 系統角色 --
+INSERT INTO dbo.role(
+	id, name, authority_codes, created_by, created_at, updated_by, updated_at)
+	VALUES ('00000000-0000-0000-0000-000000000001','系統管理員', 'PAFunc,PASetting,DMDFunc,DMDSetting,TetraFunc,TetraSetting,OTCSFunc,AlarmSetting,UserSetting','system', NOW(), 'system', NOW()),
+	('00000000-0000-0000-0000-000000000002','主任控制員', 'PAFunc,PASetting,DMDFunc,DMDSetting,TetraFunc,TetraSetting,OTCSFunc,AlarmSetting,UserSetting','system', NOW(), 'system', NOW()),
+	('00000000-0000-0000-0000-000000000003','正線控制員', 'PAFunc,PASetting,DMDFunc,DMDSetting,TetraFunc,TetraSetting,OTCSFunc,AlarmSetting,UserSetting','system', NOW(), 'system', NOW()),
+	('00000000-0000-0000-0000-000000000004','車站控制員', 'PAFunc,PASetting,DMDFunc,DMDSetting,TetraFunc,TetraSetting,OTCSFunc,AlarmSetting,UserSetting','system', NOW(), 'system', NOW()),
+	('00000000-0000-0000-0000-000000000005','電力控制員', 'PAFunc,PASetting,DMDFunc,DMDSetting,TetraFunc,TetraSetting,OTCSFunc,AlarmSetting,UserSetting','system', NOW(), 'system', NOW()),
+	('00000000-0000-0000-0000-000000000006','機場控制員', 'PAFunc,PASetting,DMDFunc,DMDSetting,TetraFunc,TetraSetting,OTCSFunc,AlarmSetting,UserSetting','system', NOW(), 'system', NOW()),
+	('00000000-0000-0000-0000-000000000007','維修人員', 'PAFunc,PASetting,DMDFunc,DMDSetting,TetraFunc,TetraSetting,OTCSFunc,AlarmSetting,UserSetting','system', NOW(), 'system', NOW());
