@@ -11,5 +11,13 @@
         /// 取得所有系統使用者
         /// </summary>
         public class GetAllUsers { }
+
+        public class GetRole
+        {
+        }
+
+        public class GetPagedRoles
+        {
+        }
     }
 }

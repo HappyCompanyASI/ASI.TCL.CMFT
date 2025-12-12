@@ -2,6 +2,20 @@
 {
     public static class Commands
     {
+
+        public class CreateRole
+        {
+        }
+
+        public class UpdateRole
+        {
+        }
+
+        public class DeleteRole
+        {
+        }
+
+
         /// <summary>
         /// 創建系統使用者
         /// </summary>
@@ -57,5 +71,6 @@
         }
 
 
+       
     }
 }
